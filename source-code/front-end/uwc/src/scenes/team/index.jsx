@@ -1,11 +1,11 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme, Button } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataTeam } from "../../data/mockData";
-import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
+import LineChart from "../../components/LineChart";
+import PieChart from "../../components/PieChart";
 
 const Team = () => {
   const theme = useTheme();
@@ -26,8 +26,8 @@ const Team = () => {
       align: "left",
     },
     {
-      field: "phone",
-      headerName: "Phone Number",
+      field: "type",
+      headerName: "Type",
       flex: 1,
     },
     {
@@ -36,10 +36,10 @@ const Team = () => {
       flex: 1,
     },
     {
-      field: "accessLevel",
-      headerName: "Access Level",
+      field: "status",
+      headerName: "Status",
       flex: 1,
-      renderCell: ({ row: { access } }) => {
+      renderCell: ({ row: { status } }) => {
         return (
           <Box
             width="60%"
@@ -48,19 +48,16 @@ const Team = () => {
             display="flex"
             justifyContent="center"
             backgroundColor={
-              access === "admin"
-                ? colors.greenAccent[600]
-                : access === "manager"
+              status === "Free"
                 ? colors.greenAccent[700]
-                : colors.greenAccent[700]
+                : status === "Busy"
+                ? colors.redAccent[700]
+                : colors.blueAccent[700]
             }
             borderRadius="4px"
           >
-            {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
-            {access === "manager" && <SecurityOutlinedIcon />}
-            {access === "user" && <LockOpenOutlinedIcon />}
             <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-              {access}
+              {status}
             </Typography>
           </Box>
         );
@@ -70,37 +67,110 @@ const Team = () => {
 
   return (
     <Box m="20px">
-      <Header title="TEAM" subtitle="Managing the Team Members" />
-      <Box
-        m="40px 0 0 0"
-        height="75vh"
-        sx={{
-          "& .MuiDataGrid-root": {
-            border: "none",
-          },
-          "& .MuiDataGrid-cell": {
-            borderBottom: "none",
-          },
-          "& .name-column--cell": {
-            color: colors.greenAccent[300],
-          },
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.blueAccent[700],
-            borderBottom: "none",
-          },
-          "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[400],
-          },
-          "& .MuiDataGrid-footerContainer": {
-            borderTop: "none",
-            backgroundColor: colors.blueAccent[700],
-          },
-          "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`,
-          },
-        }}
+      <Box 
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
       >
-        <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+        <Header title="Employees" subtitle="Managing the workers" />
+
+        <Box>
+          <Button
+            sx={{
+              backgroundColor: colors.blueAccent[700],
+              color: colors.grey[100],
+              fontSize: "14px",
+              fontWeight: "bold",
+              padding: "10px 20px",
+            }}
+          >
+            <AddIcon sx={{ mr: "10px" }} />
+            Add Employee
+          </Button>
+        </Box>
+      </Box>
+      <Box
+        display="grid"
+        gridTemplateColumns="repeat(12, 1fr)"
+        gridAutoRows="140px"
+        gap="18px"
+      >
+        {/* ROW 1 */}
+        <Box
+          gridColumn="span 7"
+          gridRow="span 2"
+          backgroundColor={colors.primary[400]}
+        >
+          <Box
+            mt="25px"
+            p="0 30px"
+            display="flex "
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                fontWeight="900"
+                color={colors.grey[100]}
+                fontSize={30}
+              >
+                Performance
+              </Typography>
+            </Box>
+          </Box>
+          <Box height="250px" m="-20px 0 0 0">
+            <LineChart isDashboard={true} />
+          </Box>
+        </Box>
+        <Box
+          gridColumn="span 5"
+          gridRow="span 2"
+          backgroundColor={colors.primary[400]}
+          overflow="auto"
+          p="30px"
+        >
+          <Typography variant="h5" fontWeight="600">
+            Task Performance
+          </Typography>
+          <Box height="195px" mt="20px">
+            <PieChart isDashboard={true}/>
+          </Box>
+        </Box>
+
+        <Box
+          gridColumn="span 12"
+          gridRow="span 2"
+          m="20px 0 0 0"
+          height="50vh"
+          sx={{
+            "& .MuiDataGrid-root": {
+              border: "none",
+            },
+            "& .MuiDataGrid-cell": {
+              borderBottom: "none",
+            },
+            "& .name-column--cell": {
+              color: colors.greenAccent[300],
+            },
+            "& .MuiDataGrid-columnHeaders": {
+              backgroundColor: colors.blueAccent[700],
+              borderBottom: "none",
+            },
+            "& .MuiDataGrid-virtualScroller": {
+              backgroundColor: colors.primary[400],
+            },
+            "& .MuiDataGrid-footerContainer": {
+              borderTop: "none",
+              backgroundColor: colors.blueAccent[700],
+            },
+            "& .MuiCheckbox-root": {
+              color: `${colors.greenAccent[200]} !important`,
+            },
+          }}
+        >
+          <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+        </Box>
       </Box>
     </Box>
   );

@@ -135,14 +135,14 @@ const Sidebar = () => {
             />
             <Item
               title="Vehicle"
-              to="/team"
+              to="/vehicle"
               icon={<LocalShippingIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="MCPs"
-              to="/team"
+              to="/MCPs"
               icon={<PinDropIcon />}
               selected={selected}
               setSelected={setSelected}

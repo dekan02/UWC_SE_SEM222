@@ -4,7 +4,7 @@ import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard";
 import Team from "./scenes/team"
-import Invoices from "./scenes/MCPs";
+import MCP from "./scenes/MCPs";
 import Form from "./scenes/vehicle";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
@@ -25,7 +25,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/team" element={<Team />} />
-              <Route path="/MCPs" element={<Invoices />} />
+              <Route path="/MCPs" element={<MCP />} />
               <Route path="/vehicle" element={<Form />} />
               <Route path="/calendar" element={<Calendar />} />
             </Routes>
