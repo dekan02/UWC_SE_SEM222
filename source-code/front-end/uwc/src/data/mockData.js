@@ -52,50 +52,38 @@ export const mockDataTeam = [
 ];
 
 
-
-
-export const mockJobs = [
+export const mockDataMCP = [
   {
-    txId: "E1",
-    user: "Employee 1",
-    date: "01-01-2023",
+    id: "MCP1",
+    type: "Small",
+    location: "123 Nguyen Van Linh",
+    status: "Free"
   },
   {
-    txId: "E2",
-    user: "Employee 2",
-    date: "15-01-2023",
+    id: "MCP2",
+    type: "Large",
+    location: "456 Cach Mang Thang 8",
+    status: "Busy"
   },
   {
-    txId: "E3",
-    user: "Employee 3",
-    date: "01-02-2023",
+    id: "MCP3",
+    type: "Medium",
+    location: "12 Nguyen Van Dau",
+    status: "Free"
   },
   {
-    txId: "E4",
-    user: "Employee 4",
-    date: "14-02-2023",
+    id: "MCP4",
+    type: "Large",
+    location: "10 Le Van Duyet",
+    status: "Busy"
   },
   {
-    txId: "E6",
-    user: "Employee 1",
-    date: "16-02-2023",
+    id: "MCP5",
+    type: "Medium",
+    location: "10 Ham Nghi",
+    status: "Free"
   },
-  {
-    txId: "E12",
-    user: "Employee 12",
-    date: "17-02-2023",
-  },
-  {
-    txId: "E16",
-    user: "Employee 16",
-    date: "19-03-2023",
-  },
-  {
-    txId: "E20",
-    user: "Employee 20",
-    date: "30-03-2023",
-  },
-];
+]
 
 export const mockBarData = [
   {

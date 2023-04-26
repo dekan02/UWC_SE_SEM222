@@ -2,36 +2,23 @@ import { Box, Typography, useTheme, Button } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataTeam } from "../../data/mockData";
 import Header from "../../components/Header";
 import PieChart2 from "../../components/PieChart2";
+import { mockDataMCP } from "../../data/mockData";
 
 const MCP = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
-    { field: "id", headerName: "ID" },
-    {
-      field: "name",
-      headerName: "Name",
-      flex: 1,
-      cellClassName: "name-column--cell",
-    },
-    {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
+    { field: "id", headerName: "ID", flex: 0.5 },
     {
       field: "type",
       headerName: "Type",
       flex: 1,
     },
     {
-      field: "email",
-      headerName: "Email",
+      field: "location",
+      headerName: "Location",
       flex: 1,
     },
     {
@@ -149,7 +136,7 @@ const MCP = () => {
             },
           }}
         >
-          <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+          <DataGrid checkboxSelection rows={mockDataMCP} columns={columns} />
         </Box>
       </Box>
     </Box>
